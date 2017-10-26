@@ -1,5 +1,7 @@
 # This md is for documenting the instalation bullshit on all the OSs
 
+We will be using [Visual Studio Code](https://code.visualstudio.com/) for coding and we should install [this great extension](https://marketplace.visualstudio.com/items?itemName=donjayamanne.python) for Python
+
 ## MAC
 
 ## Windows
@@ -13,6 +15,7 @@ $ sudo apt-get update
 $ sudo apt-get install python3.6
 $ sudo pip3 install virtualenv
 ```
+
 > Note: debian users might need to add testing repos, [check this](https://unix.stackexchange.com/questions/332641/how-to-install-python-3-6).
 
 Later you should clone the [repo for the workshop](https://github.com/edwinabot/python-microservices-crash-course.git) and then do this

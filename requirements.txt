@@ -1,0 +1,6 @@
+sqlite3
+falcon
+gunicorn
+waitress
+SQLAlchemy
+requests
