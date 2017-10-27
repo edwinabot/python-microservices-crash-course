@@ -1,9 +1,9 @@
-# pylint: disable=unused-variable
-
+# pylint: disable=unused-variable, C0111
 """
 This is the docstring for this module
 """
-
+import random
+import uuid
 from datetime import date
 
 
@@ -47,5 +47,77 @@ def show_me_some_syntax():
     # Now lets iterate over a dict
     print('\n=== Looping a dict {} with a for loop ===')
     for key, value in a_dictionary.items():
-        clean_key = key.replace('_', ' ')  # Let's replace underscores for spaces
+        clean_key = key.replace('_', ' ')   # Let's replace underscores for spaces
         print(f"The {clean_key} is {value}")
+
+
+class Dog:
+    _all_known_dogs = []                    # When declared in the body of the class
+                                            # the attributes are "Class attributes"
+
+    def __init__(self, name, color):        # The init method is for initialization
+        self._name = name                   # of new instances not to be confused
+        self._color = color                 # with a constructor. The 'self' param
+        self._all_known_dogs.append(self)   # has the reference to the instance
+
+    def bark(self):                         # this is an instance method
+        print('Bark bark!!...')             # the 'self' param contains the reference
+                                            # to the instance
+
+    @classmethod
+    def survive_a_cataclysm(cls):      # this is a class method
+        randint = random.randint(1, 100)    # the 'cls' param has a reference
+        if randint < 65:                    # to the class. Ergo we use it to access
+            cls._all_known_dogs.clear()     # class methods and attributes.
+                                            # We can do Dog.survive_a_cataclysm()
+
+    @property
+    def color(self):                        # This is a getter property for color
+        return self._color
+
+    @color.setter                           # This is the setter for color
+    def color(self, value):                 # we can add validations and
+        self._color = value                 # some other logic related to access control
+
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        self._name = value
+
+    @classmethod
+    def get_all_known_dogs(cls):
+        return cls._all_known_dogs
+
+class Machine:
+
+    def __init__(self, serial_number):
+        self._serial_number = serial_number
+
+
+class Robot(Machine):  # Robot inherits Machine
+
+    def __init__(self, serial_number, behaviour):
+        super().__init__(serial_number)
+        self._behaviour = behaviour
+
+    def do_behaviour(self):
+        self._behaviour()
+
+
+class CyborgDog(Dog, Robot):  # CyborgDog inherits from Dog and Robot
+
+    def __init__(self, name, color='Silver'):
+        Dog.__init__(self, name, color)
+        Robot.__init__(self, str(uuid.uuid4()), CyborgDog.some_cyborg_behaviour)
+
+    @staticmethod
+    def some_cyborg_behaviour():
+        print('Im a CyborgDog... I do CyborgDog stuff')
+
+    def bark(self):
+        super().bark()
+        print(f"I'm {self.name}")
+        print('\a')
