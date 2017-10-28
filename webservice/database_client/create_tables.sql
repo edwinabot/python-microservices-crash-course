@@ -1,0 +1,6 @@
+CREATE TABLE photos
+id INTEGER PRIMARY KEY,
+albumId INTEGER,
+title VARCHAR(255),
+thumbnailUrl VARCHAR(2000),
+url VARCHAR(2000));
