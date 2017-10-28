@@ -8,6 +8,5 @@ wrapt==1.10.11
 falcon
 requests
 SQLAlchemy
-sqlite3
 gunicorn
 waitress
