@@ -1,4 +1,3 @@
-from uuid import uuid4
 from database.actions.abstract_action import DatabaseAction
 from database.photo_model import PhotoModel
 

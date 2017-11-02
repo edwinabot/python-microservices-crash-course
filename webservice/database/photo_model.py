@@ -25,3 +25,10 @@ class PhotoModel:
     @property
     def thumbnail_url(self):
         return self._thumbnail_url
+
+    def as_dict(self):
+        return {'photo_id': self.photo_id,
+                'album_id': self.album_id,
+                'title': self.title,
+                'url': self.url,
+                'thumbnail_url': self.thumbnail_url}

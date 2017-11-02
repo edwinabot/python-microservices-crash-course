@@ -11,6 +11,7 @@ from database.database import create_database
 import settings
 
 api = falcon.API()
+api.add_route('/photo/{photo_id}', PhotoResource())
 api.add_route('/photo', PhotoResource())
 
 if __name__ == '__main__':

@@ -24,32 +24,32 @@ def create_database():
 class Database:
     _db_path = db_path + db_name
     _connection = None
+    _cursor = None
 
-    @classmethod
-    def _open(cls):
-        if cls._connection:
-            cls.close()
-        cls._connection = sqlite3.connect(db_path + db_name)
-        return cls._connection.cursor()
+    def _open(self):
+        if self._connection:
+            self.close()
+        self._connection = sqlite3.connect(db_path + db_name)
+        self._cursor = self._connection.cursor()
+        return self._cursor
 
-    @classmethod
-    def _close(cls):
-        if cls._connection:
-            cls._connection.close()
-            cls._connection = None
+    def _close(self):
+        if self._connection:
+            self._cursor.close()
+            self._cursor = None
+            self._connection.commit()
+            self._connection.close()
+            self._connection = None
 
-    @classmethod
-    def execute(cls, action):
-        try:
-            cursor = cls._open()
-            cursor.execute(action.create_statement())
-            result = cursor.lastrowid
-        except Exception as ex:
-            raise ex
-        finally:
-            cls._close()
-        return result
+    def execute(self, action):
+        return self._cursor.execute(action.create_statement())
 
-    @classmethod
-    def execute_many(cls, actions):
-        raise NotImplementedError()
+    def execute_many(self, actions):
+        return [self.execute(action) for action in actions]
+
+    def __enter__(self):
+        self._open()
+        return self
+
+    def __exit__(self, exception_type, exception_value, traceback):
+        self._close()
