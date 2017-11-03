@@ -1,5 +1,5 @@
 class PhotoModel:
-    def __init__(self, photo_id, album_id, title, url, thumbnail_url):
+    def __init__(self, album_id, photo_id, title, url, thumbnail_url):
         self._photo_id = photo_id
         self._album_id = album_id
         self._title = title

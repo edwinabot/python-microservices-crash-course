@@ -28,7 +28,11 @@ class PhotoResource:
     def on_post(self, request: falcon.Request, response: falcon.Response):
         """Handles POST requests"""
         doc = json.load(request.bounded_stream)
-        photo = PhotoModel(doc['id'], doc['albumId'], doc['title'], doc['url'], doc['thumbnailUrl'])
+        photo = PhotoModel(photo_id=doc['id'],
+                           album_id=doc['albumId'],
+                           title=doc['title'],
+                           url=doc['url'],
+                           thumbnail_url=doc['thumbnailUrl'])
 
         with Database() as db:
             action = InsertPhotoAction(photo)
