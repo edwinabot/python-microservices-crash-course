@@ -3,7 +3,7 @@ from database.photo_model import PhotoModel
 
 class GetPhotoByIdAction(DatabaseAction):
 
-    def __init__(self, photo_id: PhotoModel):
+    def __init__(self, photo_id: int):
         self._photo_id = photo_id
 
     def create_statement(self):

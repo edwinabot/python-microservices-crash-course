@@ -26,21 +26,6 @@ class Database:
     _connection = None
     _cursor = None
 
-    def _open(self):
-        if self._connection:
-            self.close()
-        self._connection = sqlite3.connect(db_path + db_name)
-        self._cursor = self._connection.cursor()
-        return self._cursor
-
-    def _close(self):
-        if self._connection:
-            self._cursor.close()
-            self._cursor = None
-            self._connection.commit()
-            self._connection.close()
-            self._connection = None
-
     def execute(self, action):
         return self._cursor.execute(action.create_statement())
 
@@ -48,8 +33,16 @@ class Database:
         return [self.execute(action) for action in actions]
 
     def __enter__(self):
-        self._open()
+        if self._connection:
+            self.close()
+        self._connection = sqlite3.connect(db_path + db_name)
+        self._cursor = self._connection.cursor()
         return self
 
     def __exit__(self, exception_type, exception_value, traceback):
-        self._close()
+        if self._connection:
+            self._cursor.close()
+            self._cursor = None
+            self._connection.commit()
+            self._connection.close()
+            self._connection = None
