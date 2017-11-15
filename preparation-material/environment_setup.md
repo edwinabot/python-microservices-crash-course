@@ -8,6 +8,7 @@ Download latest python 3.6 PKG file from: https://www.python.org/downloads/mac-o
 Make sure to select "Add python to the PATH" option.
 
 > cd python-microservices-crash-course
+
 > pip install -r requirements.txt
 
 
@@ -20,6 +21,7 @@ Open a terminal (Start menu > Run) then type cmd and press enter.
 
 Run following command to install dependencies:
 > cd python-microservices-crash-course
+
 > pip install -r requirements.txt
 
 
