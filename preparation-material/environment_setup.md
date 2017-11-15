@@ -4,7 +4,24 @@ We will be using [Visual Studio Code](https://code.visualstudio.com/) for coding
 
 ## MAC
 
+Download latest python 3.6 PKG file from: https://www.python.org/downloads/mac-osx/
+Make sure to select "Add python to the PATH" option.
+
+> cd python-microservices-crash-course
+> pip install -r requirements.txt
+
+
 ## Windows
+
+Download MSI installer from https://www.python.org/downloads/windows/
+Make sure to select "Add python to the PATH" on the installer first dialog.
+
+Open a terminal (Start menu > Run) then type cmd and press enter.
+
+Run following command to install dependencies:
+> cd python-microservices-crash-course
+> pip install -r requirements.txt
+
 
 ## Ubuntu / Debian
 
