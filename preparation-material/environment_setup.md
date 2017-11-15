@@ -1,6 +1,6 @@
 # Here is the environment setup for this workshop
 
-We will be using [Visual Studio Code](https://code.visualstudio.com/) for coding and we should install [this great extension](https://marketplace.visualstudio.com/items?itemName=donjayamanne.python) for Python
+We will be using [Visual Studio Code](https://code.visualstudio.com/) for coding and we should install [this great extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python) for Python
 
 ## MAC
 
